@@ -1,0 +1,59 @@
+namespace io.clause.outbound.physical.payments.Xero
+
+import io.clause.outbound.physical.*
+import io.clause.outbound.physical.payments.*
+
+// From https://developer.xero.com/documentation/api/invoices#post
+concept XeroInvoice extends PhysicalIntegrationModel {
+  o XeroInvoiceType type 
+  o XeroInvoiceStatus status optional
+  o XeroLineItem[] lineItems
+  o String accountName
+  o DateTime dateIssued optional
+  o DateTime dateDue optional
+  o XeroTaxType lineAmountTypes optional
+  o String invoiceNumber optional
+  o String reference optional
+  o String url optional
+  o Currency currency optional
+  o Double currencyRate optional
+  o Boolean sentToContact optional
+  o DateTime expectedPaymentDate optional
+  o DateTime plannedPaymentDate optional
+}
+
+enum XeroInvoiceType {
+  o ACCPAY    // Accounts Payable
+  o ACCREC    // Accounts Receivable
+}
+
+enum XeroInvoiceStatus {
+  o DRAFT
+  o SUBMITTED
+  o AUTHORISED
+}
+
+enum XeroTaxType {
+  o Exclusive
+  o Inclusive
+  o NoTax
+}
+
+concept XeroLineItem {
+  o String description
+  o Integer quantity
+  o Double unitAmount
+  o String itemCode optional
+  o String accountCode optional
+  o String lineItemId optional
+  o XeroTaxType taxType optional
+  o Double taxAmount optional
+  o Double lineAmount optional
+  o Double discountRate optional
+  o XeroTracking tracking optional
+}
+
+concept XeroTracking {
+  o String name
+  o String optionName
+}

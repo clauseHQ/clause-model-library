@@ -1,0 +1,28 @@
+namespace io.clause.outbound.logical
+
+abstract event ClauseEvent {
+  o String contractId
+}
+
+event Payment extends ClauseEvent{
+  o Double amount
+  o String currency
+  o String description
+  o String source
+  o String destination
+}
+
+event Alert extends ClauseEvent {
+  o String title
+  o String message
+}
+
+abstract event ContractStatusChangeEvent extends ClauseEvent {
+  o String previousState
+  o String newState
+}
+
+
+event NotImplementedEvent extends ClauseEvent {
+  // DO NOT IMPLEMENT THIS, JUST USED FOR UNIT TESTING / COVERAGE
+}

@@ -1,0 +1,20 @@
+namespace io.clause.outbound.physical.payments.Stripe
+
+import io.clause.outbound.physical.*
+import io.clause.outbound.physical.payments.*
+
+// From https://stripe.com/docs/api#create_charge
+// Ignoring Connect attributes
+concept StripeCreateCharge extends PhysicalIntegrationModel {
+  o String userKey
+  o Integer amount
+  o Currency currency
+  o Boolean capture default=true
+  o String description optional
+  o String metadata optional // serialized object of name/value pairs
+  o String receiptEmail optional
+  o String shipping optional // serialized object
+  o String customerId optional // Either customer or optional is required
+  o CreditCard source optional // Either customer or optional is required
+  o String statementDescriptor optional
+}

@@ -1,0 +1,15 @@
+namespace io.clause.outbound.physical.payments.crypto.Ethereum
+
+import io.clause.outbound.physical.*
+
+// From: https://www.mlgblockchain.com/bitcoinjs-sign.html
+// From: https://github.com/ethereumjs/ethereumjs-tx
+concept EthereumTransfer extends PhysicalIntegrationModel {
+  o String provider
+  o String fromAccount
+  o String toAccount
+  o Double value
+  o Double gasLimit
+  o Double gasPrice
+  o String privateKey
+}

@@ -1,0 +1,66 @@
+namespace io.clause.outbound.physical
+
+abstract concept PhysicalIntegrationModel {}
+
+/**
+ * Synchronous outbound messages via HTTP 
+ */
+concept Http extends PhysicalIntegrationModel {
+  o HttpMethod method
+  o String url
+  o String[] headers optional
+  o String body
+}
+
+concept BearerTokenHTTP extends Http {
+  o String token
+}
+
+concept OauthHTTP extends Http {
+  o String token
+  o String refreshToken
+}
+
+enum HttpMethod {
+  o POST
+  o PATCH
+  o GET
+  o DELETE
+}
+
+enum LogLevel {
+  o error
+  o warn
+  o info
+  o verbose
+  o debug
+  o silly
+}
+
+/**
+ * Logging to console 
+ */
+concept ConsoleLog extends PhysicalIntegrationModel {
+  o LogLevel level
+  o String message
+}
+
+/**
+ * Async outbound messages via MQTT
+ */
+abstract concept Mqtt extends PhysicalIntegrationModel{
+  o String connectionString
+  o Integer qos default=2
+  o String message
+}
+
+concept MqttTopicPublish extends Mqtt {
+  o String topic
+}
+
+concept MqttQueueSend extends Mqtt {
+  o String queue
+}
+
+// Do not implement this, used for testing the error handling
+concept NonImplementedModel extends PhysicalIntegrationModel {}

@@ -4,7 +4,7 @@ import io.clause.outbound.physical.*
 import io.clause.outbound.physical.payments.*
 
 // From https://revolutdev.github.io/business-api/#create-payment
-concept RevolutCreatePayment extends PhysicalIntegrationModel {
+transaction RevolutCreatePayment extends PhysicalAction {
   o String apiKey
   o String requestId
   o String accountId

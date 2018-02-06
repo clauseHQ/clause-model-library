@@ -5,7 +5,7 @@ import io.clause.outbound.physical.payments.*
 
 // From https://stripe.com/docs/api#create_charge
 // Ignoring Connect attributes
-concept StripeCreateCharge extends PhysicalIntegrationModel {
+transaction StripeCreateCharge extends PhysicalAction {
   o String userKey
   o Integer amount
   o Currency currency

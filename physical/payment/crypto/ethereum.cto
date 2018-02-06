@@ -4,7 +4,7 @@ import io.clause.outbound.physical.*
 
 // From: https://www.mlgblockchain.com/bitcoinjs-sign.html
 // From: https://github.com/ethereumjs/ethereumjs-tx
-concept EthereumTransfer extends PhysicalIntegrationModel {
+transaction EthereumTransfer extends PhysicalAction {
   o String provider
   o String fromAccount
   o String toAccount

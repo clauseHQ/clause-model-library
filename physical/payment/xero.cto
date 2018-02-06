@@ -4,7 +4,7 @@ import io.clause.outbound.physical.*
 import io.clause.outbound.physical.payments.*
 
 // From https://developer.xero.com/documentation/api/invoices#post
-concept XeroInvoice extends PhysicalIntegrationModel {
+transaction XeroInvoice extends PhysicalAction {
   o XeroInvoiceType type 
   o XeroInvoiceStatus status optional
   o XeroLineItem[] lineItems

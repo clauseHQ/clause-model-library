@@ -3,7 +3,7 @@ namespace io.clause.outbound.physical.payments.crypto.Coinbase
 import io.clause.outbound.physical.*
 
 // From: https://www.npmjs.com/package/coinbase
-concept CoinbaseSend extends PhysicalIntegrationModel {
+transaction CoinbaseSend extends PhysicalAction {
   o String accessToken
   o String refreshToken
   o Double amount
@@ -12,7 +12,7 @@ concept CoinbaseSend extends PhysicalIntegrationModel {
   o String description
 }
 
-concept CoinbaseRequest extends PhysicalIntegrationModel {
+transaction CoinbaseRequest extends PhysicalAction {
   o String accessToken
   o String refreshToken
   o Double amount

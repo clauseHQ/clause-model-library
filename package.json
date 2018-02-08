@@ -23,8 +23,7 @@
     "src": [
       "common/**/*",
       "physical/**/*",
-      "logical/**/*",
-      "index.cto"
+      "logical/**/*"
     ],
     "path": "header.txt",
     "blocking": false,

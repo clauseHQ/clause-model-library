@@ -12,24 +12,16 @@ chai.should();
 
 describe('Clause Model Library', () => {
 
-    it('index.cto should include all models in the library', async () => {
-        // Add the index file and load all dependencies
-        const mm1 = new ModelManager();
-        mm1.addModelFile(fs.readFileSync(path.resolve(__dirname, '../index.cto'), 'UTF8'), 'index.cto', true);
-        await mm1.updateExternalModels();
-
+    it('All the model files should validate independently', async () => {
         // Load all files by recursive searching
-        const mm2 = new ModelManager();
         return glob('**/*.cto').then((files) => {
             files.forEach((f) => {
                 if(!f.startsWith('node_modules')){
-                    mm2.addModelFile(fs.readFileSync(path.resolve(__dirname, `../${f}`), 'UTF8'), f, true);
+                    const mm = new ModelManager();
+                    mm.addModelFile(fs.readFileSync(path.resolve(__dirname, `../${f}`), 'UTF8'), f, true);
+                    mm.updateExternalModels();
                 }
             });
-            mm2.validateModelFiles();
-
-            // Do the test
-            return mm1.getNamespaces().should.have.members(mm2.getNamespaces());
         });
     }).timeout(10000);
 });

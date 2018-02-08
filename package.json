@@ -37,6 +37,7 @@
     "eslint": "^3.19.0",
     "glob": "^7.1.2",
     "glob-promise": "^3.3.0",
-    "license-check": "^1.1.5"
+    "license-check": "^1.1.5",
+    "mocha": "^5.0.0"
   }
 }

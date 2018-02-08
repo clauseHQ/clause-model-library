@@ -8,11 +8,11 @@ import io.clause.outbound.physical.* from github://clausehq/clause-model-library
 // From: https://www.mlgblockchain.com/bitcoinjs-sign.html
 // From: https://github.com/ethereumjs/ethereumjs-tx
 transaction EthereumTransfer extends PhysicalAction {
-  o String rpcUrl default = "http://127.0.0.1:8545"
+  o String rpcUrl optional // defaults to the Rinkeby test network
   o String fromAccount
   o String toAccount
   o Long weiValue
   o Long gasLimit default = 200000
-  o Long gasPrice optional
+  o Long gasPrice optional // defaults to recent gasPrice + 20%
   o String privateKey
 }

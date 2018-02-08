@@ -3,7 +3,12 @@
   "version": "0.0.6",
   "description": "A library of reuseable models for use in smart contracts that conform to the Cicero Template Specification",
   "scripts": {
-    "licensecheck": "license-check"
+    "licensecheck": "license-check",
+    "lint:fix": "eslint --fix .",
+    "lint": "eslint .",
+    "postlint": "npm run licensecheck",
+    "test": "mocha",
+    "pretest": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -27,6 +32,11 @@
     "logError": true
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "composer-common": "^0.17.4-20180208031310",
+    "eslint": "^3.19.0",
+    "glob": "^7.1.2",
+    "glob-promise": "^3.3.0",
     "license-check": "^1.1.5"
   }
 }

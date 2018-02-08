@@ -1,0 +1,32 @@
+{
+  "name": "clause-model-library",
+  "version": "0.0.6",
+  "description": "A library of reuseable models for use in smart contracts that conform to the Cicero Template Specification",
+  "scripts": {
+    "licensecheck": "license-check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clauseHQ/clause-model-library.git"
+  },
+  "license": "LicenseRef-LICENSE",
+  "bugs": {
+    "url": "https://github.com/clauseHQ/clause-model-library/issues"
+  },
+  "homepage": "https://github.com/clauseHQ/clause-model-library#readme",
+  "license-check-config": {
+    "src": [
+      "common/**/*",
+      "physical/**/*",
+      "logical/**/*",
+      "index.cto"
+    ],
+    "path": "header.txt",
+    "blocking": false,
+    "logInfo": false,
+    "logError": true
+  },
+  "devDependencies": {
+    "license-check": "^1.1.5"
+  }
+}

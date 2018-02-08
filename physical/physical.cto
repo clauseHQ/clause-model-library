@@ -1,3 +1,6 @@
+/**
+ * (c) Copyright 2018 Clause Inc., all rights reserved.
+ */
 namespace io.clause.outbound.physical
 
 abstract transaction PhysicalAction {}

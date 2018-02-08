@@ -1,6 +1,6 @@
 namespace io.clause.outbound.physical.alerts.Atticus
 
-import io.clause.outbound.physical.*
+import io.clause.outbound.physical.PhysicalAction from github://clausehq/clause-model-library/master/physical/physical.cto
 
 transaction AtticusSlackMessage extends PhysicalAction{
   o String url

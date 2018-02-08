@@ -1,7 +1,7 @@
 namespace io.clause.outbound.physical.payments.Stripe
 
-import io.clause.outbound.physical.*
-import io.clause.outbound.physical.payments.*
+import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
+import io.clause.outbound.physical.payments.* from github://clausehq/clause-model-library/master/physical/payments/payments.cto
 
 // From https://stripe.com/docs/api#create_charge
 // Ignoring Connect attributes

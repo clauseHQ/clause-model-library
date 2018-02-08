@@ -1,6 +1,6 @@
 namespace io.clause.outbound.physical.payments.crypto.Coinbase
 
-import io.clause.outbound.physical.*
+import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
 
 // From: https://www.npmjs.com/package/coinbase
 transaction CoinbaseSend extends PhysicalAction {

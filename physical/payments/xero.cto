@@ -25,6 +25,11 @@ transaction XeroInvoice extends PhysicalAction {
   o DateTime plannedPaymentDate optional
 }
 
+transaction XeroAddLineItemToInvoice extends PhysicalAction {
+  o String invoiceId
+  o XeroLineItem lineItem
+}
+
 enum XeroInvoiceType {
   o ACCPAY    // Accounts Payable
   o ACCREC    // Accounts Receivable

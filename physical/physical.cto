@@ -51,18 +51,11 @@ transaction ConsoleLog extends PhysicalAction {
 /**
  * Async outbound messages via MQTT
  */
-abstract transaction Mqtt extends PhysicalAction{
+transaction Mqtt extends PhysicalAction{
   o String connectionString
   o Integer qos default=2
   o String message
-}
-
-transaction MqttTopicPublish extends Mqtt {
   o String topic
-}
-
-transaction MqttQueueSend extends Mqtt {
-  o String queue
 }
 
 // Do not implement this, used for testing the error handling

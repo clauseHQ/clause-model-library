@@ -5,9 +5,10 @@ namespace io.clause.outbound.physical.lifecycle.hellosign
 
 import io.clause.outbound.physical.PhysicalAction from github://clausehq/clause-model-library/master/physical/physical.cto
 
-transaction HelloSignSignatureRequest extends PhysicalAction{
+transaction HelloSignSignatureRequest extends PhysicalAction {
+  o String contractId
   o Signatory[] signatories
-  o String serializedClause
+  o String pdfUri
   o String apiKey
   o HelloSignTestMode mode
 }

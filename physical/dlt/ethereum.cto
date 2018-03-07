@@ -1,0 +1,18 @@
+/**
+ * (c) Copyright 2018 Clause Inc., all rights reserved.
+ */
+namespace io.clause.outbound.physical.dlt.ethereum
+
+import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
+
+transaction NonInteractiveEthereumTransaction extends PhysicalAction {
+  o String rpcUrl optional // defaults to the Rinkeby test network
+  o String fromAccount
+  o String privateKey
+  o String contractAddress
+  o String contractInterface
+  o String data
+  o Long gasLimit default = 200000
+  o Long gasPrice optional // defaults to recent gasPrice + 20%
+
+}

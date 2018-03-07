@@ -8,7 +8,8 @@ import io.clause.outbound.physical.PhysicalAction from github://clausehq/clause-
 transaction HelloSignSignatureRequest extends PhysicalAction {
   o String contractId
   o Signatory[] signatories
-  o String pdfUri
+  o String pdfBucket
+  o String pdfFileKey
   o String apiKey
   o HelloSignTestMode mode
 }

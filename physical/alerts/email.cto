@@ -1,0 +1,13 @@
+/**
+ * (c) Copyright 2018 Clause Inc., all rights reserved.
+ */
+namespace io.clause.outbound.physical.alerts.email
+
+import io.clause.outbound.physical.PhysicalAction from github://clausehq/clause-model-library/master/physical/physical.cto
+
+transaction EmailMessage extends PhysicalAction{
+  o String contractId
+  o String to
+  o String subject
+  o String message
+}

@@ -3,10 +3,10 @@
  */
 namespace io.clause.outbound.physical.payments.crypto.coinbase
 
-import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
+import io.clause.outbound.physical.* from github://clausehq/clause-model-library/event-base/physical/physical.cto
 
 // From: https://www.npmjs.com/package/coinbase
-transaction CoinbaseSend extends PhysicalAction {
+event CoinbaseSend extends PhysicalAction {
   o String accessToken
   o String refreshToken
   o Double amount
@@ -15,7 +15,7 @@ transaction CoinbaseSend extends PhysicalAction {
   o String description
 }
 
-transaction CoinbaseRequest extends PhysicalAction {
+event CoinbaseRequest extends PhysicalAction {
   o String accessToken
   o String refreshToken
   o Double amount

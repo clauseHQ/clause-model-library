@@ -15,7 +15,7 @@ describe('Clause Model Library', () => {
     it('All the model files should validate independently', async () => {
         // Load all files by recursive searching
         return glob('**/*.cto').then((files) => {
-            files.forEach((f) => {
+            return files.forEach((f) => {
                 if(!f.startsWith('node_modules')){
                     const mm = new ModelManager();
                     mm.addModelFile(fs.readFileSync(path.resolve(__dirname, `../${f}`), 'UTF8'), f, true);

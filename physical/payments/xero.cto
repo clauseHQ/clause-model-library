@@ -3,11 +3,11 @@
  */
 namespace io.clause.outbound.physical.payments.xero
 
-import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
-import io.clause.outbound.physical.payments.* from github://clausehq/clause-model-library/master/physical/payments/payments.cto
+import io.clause.outbound.physical.* from github://clausehq/clause-model-library/event-base/physical/physical.cto
+import io.clause.outbound.physical.payments.* from github://clausehq/clause-model-library/event-base/physical/payments/payments.cto
 
 // From https://developer.xero.com/documentation/api/invoices#post
-transaction XeroInvoice extends PhysicalAction {
+event XeroInvoice extends PhysicalAction {
   o XeroInvoiceType type 
   o XeroInvoiceStatus status optional
   o XeroLineItem[] lineItems
@@ -25,7 +25,7 @@ transaction XeroInvoice extends PhysicalAction {
   o DateTime plannedPaymentDate optional
 }
 
-transaction XeroAddLineItemToInvoice extends PhysicalAction {
+event XeroAddLineItemToInvoice extends PhysicalAction {
   o String invoiceId
   o XeroLineItem lineItem
 }

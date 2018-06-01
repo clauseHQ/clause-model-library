@@ -3,11 +3,11 @@
  */
 namespace io.clause.outbound.logical
 
-abstract transaction ClauseAction {
+abstract event ClauseAction {
   o String clauseId
 }
 
-transaction Payment extends ClauseAction{
+event Payment extends ClauseAction{
   o Double amount
   o String currency
   o String description
@@ -15,17 +15,17 @@ transaction Payment extends ClauseAction{
   o String destination
 }
 
-transaction Alert extends ClauseAction {
+event Alert extends ClauseAction {
   o String title
   o String message
 }
 
-abstract transaction ContractStatusChangeEvent extends ClauseAction {
+abstract event ContractStatusChangeEvent extends ClauseAction {
   o String previousState
   o String newState
 }
 
 
-transaction NotImplementedEvent extends ClauseAction {
+event NotImplementedEvent extends ClauseAction {
   // DO NOT IMPLEMENT THIS, JUST USED FOR UNIT TESTING / COVERAGE
 }

@@ -1,0 +1,30 @@
+namespace io.clause.common.integration
+
+asset CatalogApp identified by id {
+  o String id
+  o String name
+  o String description
+  o Boolean active
+  o Boolean deprecated
+  o String logoUrl optional
+  o String serviceUrl optional
+  o String docsUrl optional
+  o String[] validConfigurations // Which types can implement this catalog app?
+}
+
+abstract asset AppConfiguration identified by configId {
+  o String configId
+  o String name
+  o String description
+  o Boolean active
+  o String organizationId
+  --> CatalogApp app optional
+}
+
+asset GenericOAuthConfig extends AppConfiguration {
+  o String accountId
+  o String accessToken
+  o String refreshToken
+}
+
+

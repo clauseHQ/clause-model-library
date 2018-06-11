@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "composer-common": "^0.17.4-20180208031310",
+    "composer-common": "^0.19.8",
     "eslint": "^3.19.0",
     "glob": "^7.1.2",
     "glob-promise": "^3.3.0",

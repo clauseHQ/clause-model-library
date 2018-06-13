@@ -30,4 +30,6 @@ asset GenericOAuthConfig extends AppConfiguration {
   o String refreshToken
 }
 
-
+asset HTTPConfig extends AppConfiguration{
+  o String url
+}

@@ -3,21 +3,19 @@
  */
 namespace io.clause.outbound.physical.payments.stripe
 
-import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
-import io.clause.outbound.physical.payments.* from github://clausehq/clause-model-library/master/physical/payments/payments.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
 
 // From https://stripe.com/docs/api#create_charge
-// Ignoring Connect attributes
 transaction StripeCreateCharge extends PhysicalAction {
-  o String userKey
-  o Integer amount
-  o Currency currency
-  o Boolean capture default=true
+  o String accessToken // also the userKey
+  o String accountId
+  o MonetaryAmount amount
   o String description optional
-  o String metadata optional // serialized object of name/value pairs
-  o String receiptEmail optional
-  o String shipping optional // serialized object
-  o String customerId optional // Either customer or optional is required
-  o CreditCard source optional // Either customer or optional is required
-  o String statementDescriptor optional
+  o String source
+  o String statementDescriptor regex=/^[^<>"']{1,22}$/ optional
+}
+
+asset StripeToken identified by id {
+ o String id
+ o String token
 }

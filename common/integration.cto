@@ -3,6 +3,69 @@
  */
 namespace io.clause.common.integration
 
+/**
+ * A connection describes a transformation of an obligation (as emitted by a Smart Clause) into 
+ * a transaction that can perform a real-world side effect such as making a payment or sending an email 
+ * notification.
+ */
+abstract asset Connection identified by id {
+  o String id
+
+  /* Fully qualified type name of the outbound type from the transformation
+   * i.e. the physical type of the transaction */
+  o String target
+
+  /* A stringified JSONata query. 
+   * The transformation will only be applied if the query evaluates to true. 
+   * e.g. `response.value > 100` */
+  o String query optional
+
+  /* A stringified JSONata transform. 
+   * The transform will have access to:
+   * - The `response` transaction and `obligation` event from the clause execution
+   * - The `targetConfig` and `sourceConfig` (if it exists) */
+  o String transform
+
+  /* A reference to the credentials config object for the recipient of the performance.
+   * For example, this could represent the supplier's Xero account or Slack credentials */ 
+  --> AppConfiguration promiseeConfig
+
+  /* A reference to the credentials config object for the sender of the performance.
+   * The promisor is the party fulfilling the obligation.
+   * For some connections, such as a payment, the source and destination accounts are both required.
+   * This property captures the source account. */ 
+  --> AppConfiguration promisorConfig optional
+}
+
+/* An AppConfiguration captures the secrets that are required to automate an obligation. 
+ * AppConfigurations are stored in the Vault */
+abstract asset AppConfiguration identified by configId {
+  o String configId
+  o String name
+  o String description
+  o Boolean active
+
+  /* This key identifies the owner of this config.
+   * An owner can be a Clause organization or a guest user for example */
+  o String owner
+  
+  --> CatalogApp app optional
+}
+
+asset GenericOAuthConfig extends AppConfiguration {
+  o String accountId
+  o String accessToken
+  o String refreshToken
+}
+
+asset GenericTokenConfig extends AppConfiguration {
+  o String token
+}
+
+asset HTTPConfig extends AppConfiguration{
+  o String url
+}
+
 asset CatalogApp identified by id {
   o String id
   o String name
@@ -13,23 +76,4 @@ asset CatalogApp identified by id {
   o String serviceUrl optional
   o String docsUrl optional
   o String[] validConfigurations // Which types can implement this catalog app?
-}
-
-abstract asset AppConfiguration identified by configId {
-  o String configId
-  o String name
-  o String description
-  o Boolean active
-  o String organizationId
-  --> CatalogApp app optional
-}
-
-asset GenericOAuthConfig extends AppConfiguration {
-  o String accountId
-  o String accessToken
-  o String refreshToken
-}
-
-asset HTTPConfig extends AppConfiguration{
-  o String url
 }

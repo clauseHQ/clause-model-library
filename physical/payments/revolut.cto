@@ -3,8 +3,7 @@
  */
 namespace io.clause.outbound.physical.payments.revolut
 
-import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
-import io.clause.outbound.physical.payments.* from github://clausehq/clause-model-library/master/physical/payments/payments.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
 
 // From https://revolutdev.github.io/business-api/#create-payment
 transaction RevolutCreatePayment extends PhysicalAction {
@@ -12,8 +11,7 @@ transaction RevolutCreatePayment extends PhysicalAction {
   o String requestId
   o String accountId
   o RevolutReceiver receiver
-  o Integer amount
-  o Currency currency
+  o MonetaryAmount amount
   o String reference optional
   o DateTime scheduledTime optional
 }

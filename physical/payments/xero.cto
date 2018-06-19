@@ -5,6 +5,7 @@ namespace io.clause.outbound.physical.payments.xero
 
 import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
 import io.clause.outbound.physical.payments.* from github://clausehq/clause-model-library/master/physical/payments/payments.cto
+import org.accordproject.money.CurrencyCode from https://models.accordproject.org/money.cto
 
 // From https://developer.xero.com/documentation/api/invoices#post
 transaction XeroInvoice extends PhysicalAction {
@@ -18,7 +19,7 @@ transaction XeroInvoice extends PhysicalAction {
   o String invoiceNumber optional
   o String reference optional
   o String url optional
-  o Currency currency optional
+  o CurrencyCode currency optional
   o Double currencyRate optional
   o Boolean sentToContact optional
   o DateTime expectedPaymentDate optional

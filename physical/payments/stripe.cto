@@ -4,6 +4,7 @@
 namespace io.clause.outbound.physical.payments.stripe
 
 import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
 
 // From https://stripe.com/docs/api#create_charge
 transaction StripeCreateCharge extends PhysicalAction {

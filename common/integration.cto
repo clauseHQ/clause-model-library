@@ -44,6 +44,10 @@ concept OrganizationSecretOwner {
   o String organizationId
 }
 
+concept OrganizationMemberSecretOwner {
+  o String userId
+}
+
 concept GuestUserSecretOwner {
   o String userId
   o String sessionId

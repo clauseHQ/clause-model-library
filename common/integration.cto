@@ -28,41 +28,41 @@ abstract asset Connection identified by id {
 
   /* A reference to the credentials config object for the recipient of the performance.
    * For example, this could represent the supplier's Xero account or Slack credentials */ 
-  --> AppConfiguration promiseeConfig
+  --> Secret promiseeSecret
 
   /* A reference to the credentials config object for the sender of the performance.
    * The promisor is the party fulfilling the obligation.
    * For some connections, such as a payment, the source and destination accounts are both required.
    * This property captures the source account. */ 
-  --> AppConfiguration promisorConfig optional
+  --> Secret promisorSecret optional
 }
 
-/* An AppConfiguration captures the secrets that are required to automate an obligation. 
- * AppConfigurations are stored in the Vault */
-abstract asset AppConfiguration identified by configId {
-  o String configId
+/* An Secret captures the credentials that are required to automate an obligation. 
+ * Secrets are stored in the Vault */
+abstract asset Secret identified by id {
+  o String id
   o String name
   o String description
   o Boolean active
 
-  /* This key identifies the owner of this config.
+  /* This key identifies the owner of this secret.
    * An owner can be a Clause organization or a guest user for example */
   o String owner
   
   --> CatalogApp app optional
 }
 
-asset GenericOAuthConfig extends AppConfiguration {
+asset GenericOAuthSecret extends Secret {
   o String accountId
   o String accessToken
   o String refreshToken
 }
 
-asset GenericTokenConfig extends AppConfiguration {
+asset GenericTokenSecret extends Secret {
   o String token
 }
 
-asset HTTPConfig extends AppConfiguration{
+asset HTTPConfig extends Secret {
   o String url
 }
 

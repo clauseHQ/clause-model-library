@@ -3,23 +3,23 @@
  */
 namespace io.clause.outbound.physical
 
-abstract transaction PhysicalAction {}
+abstract event PhysicalAction {}
 
 /**
  * Synchronous outbound messages via HTTP 
  */
-transaction Http extends PhysicalAction {
+event Http extends PhysicalAction {
   o HttpMethod method
   o String url
   o String[] headers optional
   o String body
 }
 
-transaction BearerTokenHTTP extends Http {
+event BearerTokenHTTP extends Http {
   o String token
 }
 
-transaction OauthHTTP extends Http {
+event OauthHTTP extends Http {
   o String token
   o String refreshToken
 }
@@ -43,7 +43,7 @@ enum LogLevel {
 /**
  * Logging to console 
  */
-transaction ConsoleLog extends PhysicalAction {
+event ConsoleLog extends PhysicalAction {
   o LogLevel level
   o String message
 }
@@ -51,19 +51,19 @@ transaction ConsoleLog extends PhysicalAction {
 /**
  * Async outbound messages via MQTT
  */
-abstract transaction Mqtt extends PhysicalAction{
+abstract event Mqtt extends PhysicalAction{
   o String connectionString
   o Integer qos default=2
   o String message
 }
 
-transaction MqttTopicPublish extends Mqtt {
+event MqttTopicPublish extends Mqtt {
   o String topic
 }
 
-transaction MqttQueueSend extends Mqtt {
+event MqttQueueSend extends Mqtt {
   o String queue
 }
 
 // Do not implement this, used for testing the error handling
-transaction NonImplementedModel extends PhysicalAction {}
+event NonImplementedModel extends PhysicalAction {}

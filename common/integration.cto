@@ -37,6 +37,18 @@ abstract asset Connection identified by id {
   --> Secret promisorSecret optional
 }
 
+/* Identifier for the owner of secret in the vault */
+abstract concept SecretOwner { }
+
+concept OrganizationSecretOwner {
+  o String organizationId
+}
+
+concept GuestUserSecretOwner {
+  o String userId
+  o String sessionId
+}
+
 /* An Secret captures the credentials that are required to automate an obligation. 
  * Secrets are stored in the Vault */
 abstract asset Secret identified by id {
@@ -47,7 +59,7 @@ abstract asset Secret identified by id {
 
   /* This key identifies the owner of this secret.
    * An owner can be a Clause organization or a guest user for example */
-  o String owner
+  o SecretOwner owner
   
   --> CatalogApp app optional
 }

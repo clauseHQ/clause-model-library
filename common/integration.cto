@@ -37,18 +37,18 @@ abstract asset Connection identified by id {
   --> Secret promisorSecret optional
 }
 
-/* Identifier for the owner of secret in the vault */
-abstract concept SecretOwner { }
+/* Identifier for the scope (owner) of secret in the vault */
+abstract concept SecretScope { }
 
-concept OrganizationSecretOwner {
+concept OrganizationSecretScope {
   o String organizationId
 }
 
-concept OrganizationMemberSecretOwner {
+concept OrganizationMemberSecretScope {
   o String userId
 }
 
-concept GuestUserSecretOwner {
+concept GuestUserSecretScope {
   o String userId
   o String sessionId
 }
@@ -61,9 +61,9 @@ abstract asset Secret identified by id {
   o String description
   o Boolean active
 
-  /* This key identifies the owner of this secret.
-   * An owner can be a Clause organization or a guest user for example */
-  o SecretOwner owner
+  /* This key identifies the scope of this secret.
+   * A scope can be a Clause organization or a guest user for example */
+  o SecretScope scope
   
   --> CatalogApp app optional
 }

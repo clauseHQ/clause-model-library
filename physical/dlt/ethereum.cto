@@ -3,9 +3,9 @@
  */
 namespace io.clause.outbound.physical.dlt.ethereum
 
-import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
+import io.clause.outbound.physical.* from github://clausehq/clause-model-library/event-base/physical/physical.cto
 
-transaction NonInteractiveEthereumTransaction extends PhysicalAction {
+event NonInteractiveEthereumevent extends PhysicalAction {
   o String rpcUrl optional // defaults to the Rinkeby test network
   o String fromAccount
   o String privateKey

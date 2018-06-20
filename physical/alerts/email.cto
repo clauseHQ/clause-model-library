@@ -3,9 +3,9 @@
  */
 namespace io.clause.outbound.physical.alerts.email
 
-import io.clause.outbound.physical.PhysicalAction from github://clausehq/clause-model-library/master/physical/physical.cto
+import io.clause.outbound.physical.PhysicalAction from github://clausehq/clause-model-library/event-base/physical/physical.cto
 
-transaction EmailMessage extends PhysicalAction{
+event EmailMessage extends PhysicalAction{
   o String contractId
   o String to
   o String subject

@@ -7,7 +7,7 @@ import org.accordproject.money.MonetaryAmount from https://models.accordproject.
 import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
 
 // From https://revolutdev.github.io/business-api/#create-payment
-transaction RevolutCreatePayment extends PhysicalAction {
+event RevolutCreatePayment extends PhysicalAction {
   o String apiKey
   o String requestId
   o String accountId

@@ -8,7 +8,7 @@ import io.clause.outbound.physical.payments.* from github://clausehq/clause-mode
 import org.accordproject.money.CurrencyCode from https://models.accordproject.org/money.cto
 
 // From https://developer.xero.com/documentation/api/invoices#post
-transaction XeroInvoice extends PhysicalAction {
+event XeroInvoice extends PhysicalAction {
   o XeroInvoiceType type 
   o XeroInvoiceStatus status optional
   o XeroLineItem[] lineItems
@@ -26,7 +26,7 @@ transaction XeroInvoice extends PhysicalAction {
   o DateTime plannedPaymentDate optional
 }
 
-transaction XeroAddLineItemToInvoice extends PhysicalAction {
+event XeroAddLineItemToInvoice extends PhysicalAction {
   o String invoiceId
   o XeroLineItem lineItem
 }

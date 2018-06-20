@@ -8,7 +8,7 @@ namespace io.clause.common.integration
  * a transaction that can perform a real-world side effect such as making a payment or sending an email 
  * notification.
  */
-abstract asset Connection identified by id {
+asset Connection identified by id {
   o String id
 
   /* Fully qualified type name of the outbound type from the transformation
@@ -72,6 +72,7 @@ asset GenericOAuthSecret extends Secret {
   o String accountId
   o String accessToken
   o String refreshToken
+  o String disconnectUrl optional
 }
 
 asset GenericTokenSecret extends Secret {

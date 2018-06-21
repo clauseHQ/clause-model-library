@@ -28,7 +28,7 @@ asset Connection identified by id {
 
   /* A reference to the credentials config object for the recipient of the performance.
    * For example, this could represent the supplier's Xero account or Slack credentials */ 
-  --> Secret promiseeSecret
+  --> Secret promiseeSecret optional
 
   /* A reference to the credentials config object for the sender of the performance.
    * The promisor is the party fulfilling the obligation.

@@ -1,0 +1,6 @@
+namespace io.clause.inbound.logical.payment
+
+// Notifies that the payment initiated by a clause has completed successfully
+event ChargeSucceeded {
+  o String clauseId
+}

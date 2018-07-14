@@ -1,0 +1,109 @@
+namespace io.clause.common.audit
+
+abstract transaction AuditTrailEvent {
+  o String id
+}
+
+//
+// Contract Events
+//
+
+abstract transaction ContractEvent extends AuditTrailEvent {
+  o String contractId
+
+  // This is deliberately not normalized to aid in indexing, 
+  // i.e. organizationId could be dervied from the contractId, but this requires an additional read
+  o String organizationId
+}
+
+abstract transaction ContractUserEvent extends ContractEvent {
+  o String userId // The user responsible for triggering this event
+}
+
+transaction AddContract extends ContractUserEvent {
+  o String data // A stringified JSON object
+}
+
+transaction DeleteContract extends ContractUserEvent {
+  o String data // A stringified JSON object
+}
+
+transaction SaveContract extends ContractUserEvent {
+  o String data // A stringified JSON object
+}
+
+transaction AddSignatory extends ContractUserEvent {
+  o String signatoryId // Avoid using PII
+}
+
+transaction RemoveSignatory extends ContractUserEvent {
+  o String signatoryId // Avoid using PII
+}
+
+transaction ContractSigned extends ContractEvent {
+  o String signatoryId
+}
+
+transaction ContractAllSigned extends ContractEvent {}
+
+enum ContractLifecycleStatus {
+  o DRAFTING
+  o SIGNING
+  o RUNNING
+  o COMPLETED
+  o ABORTED
+  o ERRORED
+  o PAUSED
+  o REQUESTED
+}
+
+transaction ContractLifecycleStatusChanged extends ContractEvent {
+  o ContractLifecycleStatus newStatus
+  o ContractLifecycleStatus oldStatus
+}
+
+//
+// Clause Events
+//
+
+abstract transaction ClauseEvent extends AuditTrailEvent {
+  o String clauseId
+
+  // This is deliberately not normalized to aid in indexing
+  o String contractId
+  o String organizationId
+  o String templateUri
+}
+
+abstract transaction ClauseUserEvent extends ClauseEvent {
+  o String userId // The user responsible for triggering this event
+}
+
+transaction AddClause extends ClauseUserEvent {}
+
+transaction DeleteClause extends ClauseUserEvent {}
+
+transaction SaveClause extends ClauseUserEvent {
+  o Boolean isValid
+  o String data // A stringified JSON object
+}
+
+transaction ExecuteClause extends ClauseEvent {
+  o String request // JSON
+}
+
+enum Severity {
+  o INFO
+  o WARNING
+  o ERROR
+}
+
+transaction ClauseExecutionLog extends ClauseEvent {
+  o String title
+  o String message
+  o Severity severity
+  o String event // JSON
+  o String request // JSON
+  o String response // JSON
+  o String stack optional  // Required if severity == ERROR
+}

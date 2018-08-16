@@ -1,3 +1,6 @@
+/**
+ * (c) Copyright 2018 Clause Inc., all rights reserved.
+ */
 namespace io.clause.common.audit
 
 abstract transaction AuditTrailEvent {
@@ -88,7 +91,7 @@ transaction SaveClause extends ClauseUserEvent {
   o String data // A stringified JSON object
 }
 
-transaction ExecuteClause extends ClauseEvent {
+transaction TriggerClause extends ClauseEvent {
   o String request // JSON
 }
 

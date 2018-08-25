@@ -15,6 +15,10 @@ asset Connection identified by id {
    * i.e. the physical type of the transaction */
   o String target
 
+  /* Fully qualified type name of the inbound type from the transformation
+   * i.e. the logical type of the transaction */
+  o String source optional
+
   /* A stringified JSONata query. 
    * The transformation will only be applied if the query evaluates to true. 
    * e.g. `response.value > 100` */

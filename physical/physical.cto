@@ -11,8 +11,8 @@ abstract event PhysicalAction {}
 event Http extends PhysicalAction {
   o HttpMethod method
   o String url
-  o String[] headers optional
-  o String body
+  o String headers optional // Stringified JSON object
+  o String body // Stringified JSON object
 }
 
 event BearerTokenHTTP extends Http {

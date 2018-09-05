@@ -6,3 +6,9 @@ event AllSigned {
   o String s3Key
   o String s3Bucket
 }
+
+// Notifies Clause that a contract that has been signed by one party
+event Signed {
+  o String contractId
+  o String signatureId
+}

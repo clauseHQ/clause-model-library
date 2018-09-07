@@ -93,6 +93,7 @@ transaction SaveClause extends ClauseUserEvent {
 
 transaction TriggerClause extends ClauseEvent {
   o String request // JSON
+  o String response optional // JSON
 }
 
 enum Severity {

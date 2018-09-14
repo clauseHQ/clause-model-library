@@ -1,0 +1,17 @@
+/**
+ * (c) Copyright 2018 Clause Inc., all rights reserved.
+ */
+namespace io.clause.outbound.physical.payments.crypto.stellar
+
+import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
+
+event StellarTransfer extends PhysicalAction {
+  o String serverUrl default="https://horizon-testnet.stellar.org"
+  o Boolean useTestNetwork default=true
+  o String fromAccount
+  o String toAccount
+  o String assetType optional // defaults to Lumens
+  o Long amount
+  o String memo
+  o String sourceKeySecret
+}

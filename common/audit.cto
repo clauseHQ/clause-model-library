@@ -86,6 +86,10 @@ transaction AddClause extends ClauseUserEvent {}
 
 transaction DeleteClause extends ClauseUserEvent {}
 
+transaction ObligationEmitted extends ClauseEvent {
+  o String event // JSON
+}
+
 transaction SaveClause extends ClauseUserEvent {
   o Boolean isValid
   o String data // A stringified JSON object

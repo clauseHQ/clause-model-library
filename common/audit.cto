@@ -29,14 +29,10 @@ transaction ContractDeleted extends ContractUserEvent {
   o String contractName
 }
 
-enum ContractInformation {
-  o NAME
-  o DESCRIPTION
-  o TAGS
-}
-
 transaction ContractInformationEdited extends ContractUserEvent {
-  o ContractInformation[] changed
+  o String contractName
+  o String contractDescription
+  o String[] contractTags
 }
 
 transaction ContractTextEdited extends ContractUserEvent {

@@ -14,7 +14,6 @@ chai.use(chaiAsPromised);
 chai.should();
 
 describe('Clause Model Library', () => {
-
     it('All the model files should validate independently', async () => {
         // Load all files by recursive searching
         const files = await glob('**/*.cto');

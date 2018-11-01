@@ -5,6 +5,8 @@ namespace io.clause.common.audit
 
 abstract transaction AuditTrailEvent {
   o String id
+  o String organizationId
+  o DateTime when
 }
 
 //
@@ -13,41 +15,49 @@ abstract transaction AuditTrailEvent {
 
 abstract transaction ContractEvent extends AuditTrailEvent {
   o String contractId
-
-  // This is deliberately not normalized to aid in indexing, 
-  // i.e. organizationId could be dervied from the contractId, but this requires an additional read
-  o String organizationId
 }
 
 abstract transaction ContractUserEvent extends ContractEvent {
   o String userId // The user responsible for triggering this event
 }
 
-transaction AddContract extends ContractUserEvent {
-  o String data // A stringified JSON object
+transaction ContractCreated extends ContractUserEvent {
+  o String contractName
 }
 
-transaction DeleteContract extends ContractUserEvent {
-  o String data // A stringified JSON object
+transaction ContractDeleted extends ContractUserEvent {
+  o String contractName
 }
 
-transaction SaveContract extends ContractUserEvent {
-  o String data // A stringified JSON object
+transaction ContractInformationEdited extends ContractUserEvent {
+  o String contractName
+  o String contractDescription
+  o String[] contractTags
 }
 
-transaction AddSignatory extends ContractUserEvent {
-  o String signatoryId // Avoid using PII
+transaction ContractTextEdited extends ContractUserEvent {
+  o String diff
 }
 
-transaction RemoveSignatory extends ContractUserEvent {
-  o String signatoryId // Avoid using PII
+transaction ContractSignatoryAdded extends ContractUserEvent {
+  o String email
+  o String firstName
+  o String lastName
+}
+
+transaction ContractSignatoryRemoved extends ContractUserEvent {
+  o String email
+  o String firstName
+  o String lastName
 }
 
 transaction ContractSigned extends ContractEvent {
-  o String signatoryId
+  o String email
+  o String firstName
+  o String lastName
 }
 
-transaction ContractAllSigned extends ContractEvent {}
+transaction ContractSignedByAll extends ContractEvent {}
 
 enum ContractLifecycleStatus {
   o DRAFTING
@@ -69,12 +79,10 @@ transaction ContractLifecycleStatusChanged extends ContractEvent {
 // Clause Events
 //
 
-abstract transaction ClauseEvent extends AuditTrailEvent {
+abstract transaction ClauseEvent extends ContractEvent {
   o String clauseId
-
-  // This is deliberately not normalized to aid in indexing
-  o String contractId
-  o String organizationId
+  o String templateName
+  o String templateVersion
   o String templateUri
 }
 
@@ -82,22 +90,27 @@ abstract transaction ClauseUserEvent extends ClauseEvent {
   o String userId // The user responsible for triggering this event
 }
 
-transaction AddClause extends ClauseUserEvent {}
+transaction ClauseAdded extends ClauseUserEvent {}
 
-transaction DeleteClause extends ClauseUserEvent {}
+transaction ClauseRemoved extends ClauseUserEvent {}
 
-transaction ObligationEmitted extends ClauseEvent {
-  o String event // JSON
-}
-
-transaction SaveClause extends ClauseUserEvent {
+transaction ClauseEdited extends ClauseUserEvent {
   o Boolean isValid
   o String data // A stringified JSON object
 }
 
-transaction TriggerClause extends ClauseEvent {
+transaction ClauseTriggered extends ClauseEvent {
   o String request // JSON
   o String response optional // JSON
+}
+
+transaction ClauseActionCompleted extends ClauseEvent {
+  o String name
+}
+
+transaction ClauseActionFailed extends ClauseEvent {
+  o String name
+  o DateTime triggeredOn
 }
 
 enum Severity {
@@ -106,7 +119,7 @@ enum Severity {
   o ERROR
 }
 
-transaction ClauseExecutionLog extends ClauseEvent {
+transaction ClauseExecuted extends ClauseEvent {
   o String title
   o String message
   o Severity severity

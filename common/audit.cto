@@ -103,7 +103,6 @@ abstract transaction ClauseTriggerEvent extends ClauseEvent {
 
 transaction ClauseActionCompleted extends ClauseTriggerEvent {
   o String name
-  o String response // JSON
 }
 
 transaction ClauseActionFailed extends ClauseTriggerEvent {

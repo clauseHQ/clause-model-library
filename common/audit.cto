@@ -37,6 +37,7 @@ transaction ContractInformationEdited extends ContractUserEvent {
 
 transaction ContractTextEdited extends ContractUserEvent {
   o String diff
+  o String[] editedClauseIds
 }
 
 transaction ContractSignatoryAdded extends ContractUserEvent {
@@ -94,37 +95,24 @@ transaction ClauseAdded extends ClauseUserEvent {}
 
 transaction ClauseRemoved extends ClauseUserEvent {}
 
-transaction ClauseEdited extends ClauseUserEvent {
-  o Boolean isValid
-  o String data // A stringified JSON object
-}
-
-transaction ClauseTriggered extends ClauseEvent {
+abstract transaction ClauseTriggerEvent extends ClauseEvent {
   o String request // JSON
   o String response optional // JSON
-}
-
-transaction ClauseActionCompleted extends ClauseEvent {
-  o String name
-}
-
-transaction ClauseActionFailed extends ClauseEvent {
-  o String name
   o DateTime triggeredOn
 }
 
-enum Severity {
-  o INFO
-  o WARNING
-  o ERROR
+transaction ClauseActionCompleted extends ClauseTriggerEvent {
+  o String name
+  o String response // JSON
 }
 
-transaction ClauseExecuted extends ClauseEvent {
-  o String title
-  o String message
-  o Severity severity
+transaction ClauseActionFailed extends ClauseTriggerEvent {
+  o String name
+  o String error
+}
+
+transaction ClauseTriggered extends ClauseTriggerEvent {
   o String event // JSON
-  o String request // JSON
-  o String response // JSON
+  o String error optional
   o String stack optional  // Required if severity == ERROR
 }

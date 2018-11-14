@@ -1,0 +1,27 @@
+/**
+ * (c) Copyright 2018 Clause Inc., all rights reserved.
+ */
+namespace io.clause.outbound.physical.dlt.kaleido
+
+import io.clause.common.integration.* from github://clausehq/clause-model-library/master/common/integration.cto
+
+asset KaleidoCredentials extends Secret {
+  o String nodeId
+  o String networkId
+  o String username
+  o String password
+  o String userAccount
+  o KaleidoRegion region
+}
+
+asset KaleidoAuditLogSecret extends Secret {
+  o String contractAddress
+  o Integer gas default=50000
+}
+
+enum KaleidoRegion {
+  o US
+  o EU
+  o AP
+  o KO
+}

@@ -65,5 +65,14 @@ event MqttQueueSend extends Mqtt {
   o String queue
 }
 
+// Taken from the librdkafka configuration options, https://github.com/edenhill/librdkafka/blob/v0.11.5/CONFIGURATION.md
+event KafkaPublish extends PhysicalAction {
+  o String brokerString // Comma separated list of brokerString
+  o String message
+  o String topic
+  o String username
+  o String password
+} 
+
 // Do not implement this, used for testing the error handling
 event NonImplementedModel extends PhysicalAction {}

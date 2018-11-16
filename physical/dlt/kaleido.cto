@@ -10,11 +10,11 @@ asset KaleidoCredentials extends Secret {
   o String networkId
   o String username
   o String password
-  o String userAccount
   o KaleidoRegion region
+  o String userAccount
 }
 
-asset KaleidoAuditLogSecret extends Secret {
+asset KaleidoAuditLogCredentials extends KaleidoCredentials {
   o String contractAddress
   o Integer gas default=50000
 }

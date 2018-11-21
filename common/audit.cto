@@ -31,8 +31,8 @@ transaction ContractDeleted extends ContractUserEvent {
 
 transaction ContractInformationEdited extends ContractUserEvent {
   o String contractName
-  o String contractDescription
-  o String[] contractTags
+  o String contractDescription optional
+  o String[] contractTags optional
 }
 
 transaction ContractTextEdited extends ContractUserEvent {

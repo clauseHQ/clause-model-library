@@ -87,13 +87,20 @@ abstract transaction ClauseEvent extends ContractEvent {
   o String templateUri
 }
 
+enum Severity {
+  o INFO
+  o WARNING
+  o ERROR
+}
+
 transaction ClauseExecuted extends ClauseEvent {
   o String title
   o String message
-  o String severity
+  o Severity severity
   o String event // JSON
   o String request // JSON
   o String response // JSON
+  o String stack optional  // Required if severity == ERROR
 }
 
 abstract transaction ClauseUserEvent extends ClauseEvent {

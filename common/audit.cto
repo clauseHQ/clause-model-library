@@ -87,6 +87,15 @@ abstract transaction ClauseEvent extends ContractEvent {
   o String templateUri
 }
 
+transaction ClauseExecuted extends ClauseEvent {
+  o String title
+  o String message
+  o String severity
+  o String event // JSON
+  o String request // JSON
+  o String response // JSON
+}
+
 abstract transaction ClauseUserEvent extends ClauseEvent {
   o String userId // The user responsible for triggering this event
 }

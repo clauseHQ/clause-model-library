@@ -114,5 +114,5 @@ transaction ClauseTriggered extends ClauseTriggerEvent {
   o String event // JSON
   o String error optional
   o String stack optional  // Required if severity == ERROR
-  o Boolean debug default=false optional
+  o Boolean test default=false optional
 }

@@ -1,0 +1,17 @@
+/**
+ * (c) Copyright 2018 Clause Inc., all rights reserved.
+ */
+namespace io.clause.outbound.physical.dlt.fabric
+
+import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
+
+event AuditTrail extends PhysicalAction {
+  o String chaincodeId default = "clause"
+  o String channel default = "mychannel"
+  o String certificateAuthority
+  o String contractId
+  o String data
+  o String connectionProfile
+  o String enrolledUser
+  o String privateKey
+}

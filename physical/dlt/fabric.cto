@@ -4,14 +4,22 @@
 namespace io.clause.outbound.physical.dlt.fabric
 
 import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
+import io.clause.common.integration.* from github://clausehq/clause-model-library/master/common/integration.cto
 
 event AuditTrail extends PhysicalAction {
-  o String chaincodeId default = "clause"
-  o String channel default = "mychannel"
-  o String certificateAuthority
-  o String contractId
-  o String data
   o String connectionProfile
   o String enrolledUser
   o String privateKey
+  o String channel
+  o String certificateAuthority
+  o String chaincodeName
+}
+
+asset HyperledgerFabricEnrollment extends Secret {
+  o String connectionProfile
+  o String enrolledUser optional
+  o String privateKey optional
+  o String channel
+  o String certificateAuthority
+  o String chaincodeName
 }

@@ -13,6 +13,7 @@ event AuditTrail extends PhysicalAction {
   o String channel
   o String certificateAuthority
   o String chaincodeName
+  o String data
 }
 
 asset HyperledgerFabricEnrollment extends Secret {

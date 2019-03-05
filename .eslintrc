@@ -1,0 +1,6 @@
+{
+  "extends": ["@clausehq/eslint-config"],
+  "rules": {
+    "no-param-reassign": 0 
+  }
+}

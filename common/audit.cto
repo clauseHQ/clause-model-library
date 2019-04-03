@@ -52,6 +52,11 @@ transaction ContractSignatoryRemoved extends ContractUserEvent {
   o String lastName
 }
 
+transaction ContractManuallyCompleted extends ContractUserEvent {
+  o ContractLifecycleStatus newStatus default="COMPLETED"
+  o ContractLifecycleStatus oldStatus
+}
+
 transaction ContractSigned extends ContractEvent {
   o String email
   o String firstName

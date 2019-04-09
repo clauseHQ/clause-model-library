@@ -60,6 +60,8 @@ transaction ContractSigned extends ContractEvent {
 
 transaction ContractSignedByAll extends ContractEvent {}
 
+transaction ExternalContractSignedByAll extends ContractSignedByAll {}
+
 enum ContractLifecycleStatus {
   o DRAFTING
   o SIGNING

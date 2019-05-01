@@ -1,0 +1,19 @@
+/**
+ * (c) Copyright 2018 Clause Inc., all rights reserved.
+ */
+namespace io.clause.outbound.physical.payments.dwolla
+
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import io.clause.outbound.physical.* from github://clausehq/clause-model-library/master/physical/physical.cto
+import io.clause.common.integration.* from github://clausehq/clause-model-library/master/common/integration.cto
+
+event DwollaTransfer extends PhysicalAction {
+  o String appKey
+  o String appSecret
+  o String destinationFundingSource
+  o String sourceFundingSource
+  o MonetaryAmount amount
+  o String paymentId optional
+  o String description optional
+  o String clearing optional
+}

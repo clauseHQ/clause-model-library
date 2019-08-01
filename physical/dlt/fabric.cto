@@ -16,11 +16,14 @@ event AuditTrail extends PhysicalAction {
   o String data
 }
 
+/** Optional fields will default to the first value in the connection profile */
 asset HyperledgerFabricEnrollment extends Secret {
   o String connectionProfile
   o String enrolledUser optional
   o String privateKey optional
-  o String channel
-  o String certificateAuthority
+  o String channel optional
+  o String certificateAuthority optional
+  o String mspid optional
+  o Boolean useServiceDiscovery optional // default to false
   o String chaincodeName
 }

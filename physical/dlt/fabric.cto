@@ -14,6 +14,7 @@ event AuditTrail extends PhysicalAction {
   o String certificateAuthority
   o String chaincodeName
   o String data
+  o Boolean useServiceDiscovery optional // default to false
 }
 
 /** Optional fields will default to the first value in the connection profile */

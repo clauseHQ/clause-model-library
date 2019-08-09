@@ -117,9 +117,13 @@ transaction ClauseActionFailed extends ClauseTriggerEvent {
   o String error
 }
 
+// TODO: remove test property from ClauseTriggered and ClauseTestTriggered transactions
+
 transaction ClauseTriggered extends ClauseTriggerEvent {
   o String event // JSON
   o String error optional
   o String stack optional  // Required if severity == ERROR
   o Boolean test default=false optional
 }
+
+transaction ClauseTestTriggered extends ClauseTriggered {}

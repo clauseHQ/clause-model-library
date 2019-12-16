@@ -128,16 +128,21 @@ abstract transaction FlowStep {
   o Integer index
 }
 
-abstract transaction FlowErrorEvent {
+enum FlowPhase {
+  o hydration
+  o invocation
+}
+
+abstract transaction FlowErrorDetail {
   o FlowStep step
   o String transformation
-  o String phase
+  o FlowPhase phase
   o String message
 }
 
 abstract transaction FlowError extends ContractEvent {
   o String clauseId
-  o FlowErrorEvent error
+  o FlowErrorDetail error
 }
 
 

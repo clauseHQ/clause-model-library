@@ -125,7 +125,7 @@ transaction ClauseTriggered extends ClauseTriggerEvent {
 }
 
 abstract transaction FlowStep {
-  o Number index
+  o Integer index
 }
 
 abstract transaction FlowErrorEvent {

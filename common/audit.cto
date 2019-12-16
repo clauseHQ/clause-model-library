@@ -123,3 +123,21 @@ transaction ClauseTriggered extends ClauseTriggerEvent {
   o String stack optional  // Required if severity == ERROR
   o Boolean test default=false optional
 }
+
+abstract transaction FlowStep {
+  o Number index
+}
+
+abstract transaction FlowErrorEvent {
+  o FlowStep step
+  o String transformation
+  o String phase
+  o String message
+}
+
+abstract transaction FlowError extends ContractEvent {
+  o String clauseId
+  o FlowErrorEvent error
+}
+
+

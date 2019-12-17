@@ -142,7 +142,8 @@ transaction FlowErrorDetail {
 
 transaction FlowError extends ContractEvent {
   o String clauseId
-  o String FlowName
+  o String flowId
+  o String flowName
   o FlowErrorDetail error
 }
 

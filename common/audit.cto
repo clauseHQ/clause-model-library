@@ -124,7 +124,7 @@ transaction ClauseTriggered extends ClauseTriggerEvent {
   o Boolean test default=false optional
 }
 
-abstract transaction FlowStep {
+transaction FlowStep {
   o Integer index
 }
 
@@ -133,15 +133,16 @@ enum FlowPhase {
   o invocation
 }
 
-abstract transaction FlowErrorDetail {
+transaction FlowErrorDetail {
   o FlowStep step
   o String transformation
   o FlowPhase phase
   o String message
 }
 
-abstract transaction FlowError extends ContractEvent {
+transaction FlowError extends ContractEvent {
   o String clauseId
+  o String FlowName
   o FlowErrorDetail error
 }
 

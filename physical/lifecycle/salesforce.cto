@@ -1,5 +1,5 @@
 /**
- * (c) Copyright 2020 Clause Inc., all rights reserved.
+ * (c) Copyright 2018 Clause Inc., all rights reserved.
  */
 namespace io.clause.outbound.physical.lifecycle.salesforce
 
@@ -7,5 +7,5 @@ import io.clause.common.integration.GenericOAuthSecret from github://clausehq/cl
 
 asset SalesforceOAuthSecret extends GenericOAuthSecret {
     o String instance_url
-    o String id
+    o String userId
 }

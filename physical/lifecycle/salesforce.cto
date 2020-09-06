@@ -7,5 +7,4 @@ import io.clause.common.integration.GenericOAuthSecret from github://clausehq/cl
 
 asset SalesforceOAuthSecret extends GenericOAuthSecret {
     o String instanceUrl
-    o String userId
 }

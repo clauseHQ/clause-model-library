@@ -103,7 +103,7 @@ transaction ClauseAdded extends ClauseUserEvent {}
 transaction ClauseRemoved extends ClauseUserEvent {}
 
 abstract transaction ClauseTriggerEvent extends ClauseEvent {
-  o String request // JSON
+  o String request optional // JSON
   o String response optional // JSON
   o DateTime triggeredOn
 }

@@ -1,0 +1,19 @@
+/**
+ * (c) Copyright 2021 Clause Inc., all rights reserved.
+ */
+namespace io.clause.outbound.physical.lifecycle.plaid
+
+import io.clause.common.integration.GenericOAuthSecret from github://clausehq/clause-model-library/master/common/integration.cto
+
+enum PlaidEnvironment {
+  o sandbox
+  o development
+  o production
+}
+
+asset PlaidSecret extends Secret {
+  o String clientId
+  o String Secret
+  o PlaidEnvironment environment 
+}
+

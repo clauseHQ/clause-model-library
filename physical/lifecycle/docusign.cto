@@ -6,3 +6,5 @@ namespace io.clause.outbound.physical.lifecycle.docusign
 import io.clause.common.integration.GenericOAuthSecret from github://clausehq/clause-model-library/master/common/integration.cto
 
 asset DocuSignOAuthSecret extends GenericOAuthSecret {}
+
+asset DocuSignClmOAuthSecret extends GenericOAuthSecret {}

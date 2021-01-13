@@ -13,7 +13,7 @@ enum PlaidEnvironment {
 
 asset PlaidSecret extends Secret {
   o String clientId
-  o String Secret
+  o String secret
   o PlaidEnvironment environment 
 }
 

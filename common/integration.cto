@@ -44,15 +44,15 @@ asset Connection identified by id {
 /* Identifier for the scope (owner) of secret in the vault */
 abstract concept SecretScope { }
 
-concept OrganizationSecretScope {
+concept OrganizationSecretScope extends SecretScope {
   o String organizationId
 }
 
-concept OrganizationMemberSecretScope {
+concept OrganizationMemberSecretScope extends SecretScope {
   o String userId
 }
 
-concept GuestUserSecretScope {
+concept GuestUserSecretScope extends SecretScope {
   o String userId
   o String sessionId
 }

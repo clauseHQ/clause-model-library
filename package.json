@@ -2,6 +2,12 @@
   "name": "@clausehq/clause-model-library",
   "version": "1.0.0",
   "description": "A library of reuseable Concerto models",
+  "license": "UNLICENSED",
+  "author": "Clause Inc.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clauseHQ/clause-model-library.git"
+  },
   "scripts": {
     "licensecheck": "license-check",
     "lint:fix": "eslint --fix .",
@@ -9,26 +15,6 @@
     "postlint": "npm run licensecheck",
     "test": "mocha",
     "pretest": "npm run lint"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/clauseHQ/clause-model-library.git"
-  },
-  "license": "LicenseRef-LICENSE",
-  "bugs": {
-    "url": "https://github.com/clauseHQ/clause-model-library/issues"
-  },
-  "homepage": "https://github.com/clauseHQ/clause-model-library#readme",
-  "license-check-config": {
-    "src": [
-      "common/**/*",
-      "physical/**/*",
-      "logical/**/*"
-    ],
-    "path": "header.txt",
-    "blocking": true,
-    "logInfo": false,
-    "logError": true
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -39,5 +25,16 @@
     "license-check": "^1.1.5",
     "mocha": "^5.0.0",
     "chai-as-promised": "^7.1.1"
+  },
+  "license-check-config": {
+    "src": [
+      "common/**/*",
+      "physical/**/*",
+      "logical/**/*"
+    ],
+    "path": "header.txt",
+    "blocking": true,
+    "logInfo": false,
+    "logError": true
   }
 }

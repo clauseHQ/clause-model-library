@@ -1,0 +1,47 @@
+name: publish
+
+on:
+  release:
+    types:
+      - released
+
+jobs:
+  publish:
+    name: Publish to npm
+
+    runs-on: ubuntu-latest
+
+    outputs:
+      job-status: ${{ job.status }}
+
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+
+      - name: build and publish
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > .npmrc
+          yarn install
+          npm version --no-git-tag-version ${{ github.event.release.tag_name }}
+          npm publish
+          rm .npmrc
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          base: main
+          commit-message: 'chore(actions): publish ${{ github.event.release.tag_name }} to npm'
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          branch: clausehq-publish-${{ github.event.release.tag_name }}
+          delete-branch: true
+          title: 'chore(actions): publish ${{ github.event.release.tag_name }} to npm'
+          body: |
+            # NPM Publish
+
+            Publish build to NPM
+          assignees: ${{ github.actor }}
+          reviewers: ${{ github.actor }}
+          draft: false

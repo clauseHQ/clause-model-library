@@ -3,9 +3,8 @@
  */
 'use strict';
 
-const ModelManager = require('composer-common').ModelManager;
+const ModelLoader = require('@accordproject/concerto-core').ModelLoader;
 const glob = require('glob-promise');
-const fs = require('fs');
 const path = require('path');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
@@ -19,9 +18,7 @@ describe('Clause Model Library', () => {
         const files = await glob('**/*.cto');
         return chai.expect(Promise.all(files.map(async (f) => {
             if(!f.startsWith('node_modules')){
-                const mm = new ModelManager();
-                mm.addModelFile(fs.readFileSync(path.resolve(__dirname, `../${f}`), 'UTF8'), f, true);
-                await mm.updateExternalModels();
+                await ModelLoader.loadModelManager(null, [path.resolve(__dirname, `../${f}`)]);
             }
         }))).to.be.fulfilled;
     }).timeout(10000);

@@ -1,3 +1,6 @@
+/**
+ * (c) Copyright 2018-2021 Clause Inc., all rights reserved.
+ */
 namespace io.clause.inbound.logical.lifecycle
 
 // Notifies the AWS S3 location of contract that has been signed by all parties

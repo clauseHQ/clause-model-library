@@ -1,0 +1,29 @@
+name: unit
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  unit-tests:
+    name: Run Unit Tests
+
+    runs-on: ubuntu-latest
+
+    outputs:
+      job-status: ${{ job.status }}
+
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+
+      - name: run unit tests
+        id: unit-tests
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > .npmrc
+          yarn install
+          yarn test

@@ -1,3 +1,6 @@
+/**
+ * (c) Copyright 2018-2021 Clause Inc., all rights reserved.
+ */
 namespace io.clause.inbound.logical.payment
 
 // Notifies that the payment initiated by a clause has completed successfully

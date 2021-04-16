@@ -1,0 +1,5 @@
+# CODEOWNERS documentation at:
+# https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
+
+# All infrastructure changes must have a review
+* @clausehq/engineering

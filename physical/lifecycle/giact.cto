@@ -1,5 +1,5 @@
 /**
- * (c) Copyright 2021 Clause Inc., all rights reserved.
+ * (c) Copyright 2018-2021 Clause Inc., all rights reserved.
  */
 namespace io.clause.outbound.physical.lifecycle.giact
 
@@ -10,4 +10,3 @@ asset GiactSecret extends Secret {
   o String password
   o String environmentUrl
 }
-

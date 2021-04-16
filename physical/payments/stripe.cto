@@ -1,5 +1,5 @@
 /**
- * (c) Copyright 2018 Clause Inc., all rights reserved.
+ * (c) Copyright 2018-2021 Clause Inc., all rights reserved.
  */
 namespace io.clause.outbound.physical.payments.stripe
 
